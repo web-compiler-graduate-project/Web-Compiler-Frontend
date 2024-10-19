@@ -8,7 +8,7 @@ function CodeInput({ code, setCode }) {
 
   return (
     <Editor
-      height="500px"
+      height="600px"
       defaultLanguage="cpp"
       value={code}
       onChange={handleChange}

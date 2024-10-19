@@ -1,61 +1,116 @@
 html, body {
   height: 100%;
   margin: 0;
+  padding: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
 }
 
 .App-header {
   text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 0;
   background-color: #282c34;
   color: white;
+  width: 100vw;
 }
 
 textarea {
-  width: 100%;
-  height: 500px;
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  resize: vertical;
+  width: 100vw; /* Zajmuje 100% szerokości okna */
+  height: 50vh; /* Elastyczna wysokość */
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 10px; /* Dodano padding dla lepszego wyglądu */
+  border: 1px solid #ccc; /* Dodano delikatną granicę */
+  border-radius: 4px; /* Zaokrąglenie rogów */
+  font-size: 1rem;
+  box-sizing: border-box; /* Upewnienie się, że wymiary obejmują krawędzie */
+  transition: border-color 0.3s; /* Animacja zmiany koloru granicy */
+}
+
+textarea:focus {
+  border-color: #61dafb; /* Zmiana koloru granicy po skupieniu */
 }
 
 button {
   margin-top: 10px;
-  padding: 10px 20px;
+  width: 150px; /* Stała szerokość przycisku */
+  height: 50px; /* Stała wysokość przycisku */
+  padding: 0; /* Usunięcie paddingu */
   background-color: #61dafb;
   border: none;
   border-radius: 4px;
   color: black;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s; /* Animacja transformacji */
 }
 
 button:hover {
   background-color: #4fa3c4;
+  transform: scale(1.05); /* Efekt powiększenia po najechaniu */
 }
 
 pre {
   text-align: left;
   background-color: #1e1e1e;
-  border: 1px solid #333;
-  padding: 10px;
-  width: 100%;
-  height: 200px;
-  margin: 10px auto;
+  border: none; /* Usunięcie granic */
+  padding: 10px; /* Dodano padding */
+  width: 100vw; /* Zajmuje 100% szerokości okna */
+  height: 30vh; /* Elastyczna wysokość */
+  margin: 0 auto; /* Wycentrowanie elementu */
   overflow: auto;
   color: #d4d4d4;
   font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
   white-space: pre-wrap;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Zapewnienie, że wymiary obejmują krawędzie */
 }
 
 pre .keyword { color: #569cd6; }
 pre .string { color: #ce9178; }
 pre .comment { color: #6a9955; }
 pre .variable { color: #9cdcfe; }
+
+@media (max-width: 768px) {
+  .App-header {
+    padding: 0;
+    min-height: auto;
+  }
+
+  textarea {
+    height: 40vh;
+    font-size: 0.9rem;
+  }
+
+  pre {
+    height: 25vh;
+    font-size: 0.875rem;
+    padding: 5px; /* Mniejsze paddingi na mniejszych ekranach */
+  }
+
+  button {
+    width: 120px; /* Mniejsza szerokość przycisku na mniejszych ekranach */
+    height: 40px; /* Mniejsza wysokość przycisku na mniejszych ekranach */
+  }
+}
+
+@media (max-width: 480px) {
+  textarea {
+    height: 30vh;
+  }
+
+  pre {
+    height: 20vh;
+    font-size: 0.85rem;
+  }
+
+  button {
+    width: 100px;
+    height: 35px;
+  }
+}
