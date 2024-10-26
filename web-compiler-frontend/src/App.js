@@ -7,6 +7,7 @@ import OutputDisplay from './components/OutputDisplay';
 import { compileCode } from './services/compileService';
 import Loader from './components/Loader';
 import { Helmet } from 'react-helmet';
+import RegisterPage from './components/Register/RegisterPage';
 
 function App() {
   const [code, setCode] = useState('');
@@ -37,14 +38,15 @@ function App() {
           <link rel="icon" href="/favicon.ico" />
         </Helmet>
         <Navbar onCompile={handleSubmit} />
-        <header className="App-header">
-          <CodeInput code={code} setCode={setCode} />
-          {isLoading ? <Loader /> : <OutputDisplay output={output} />}
-        </header>
         <Routes>
-          {/* Przykładowa strona do której chcesz przekierować */}
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<div>Login Page</div>} />
-          {/* Dodaj inne ścieżki w razie potrzeby */}
+          <Route path="/" element={
+              <header className="App-header">
+                <CodeInput code={code} setCode={setCode} />
+                {isLoading ? <Loader /> : <OutputDisplay output={output} />}
+              </header>
+          } />
         </Routes>
       </div>
     </Router>

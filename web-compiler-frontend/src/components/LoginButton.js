@@ -1,11 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const LoginButton = () => {
-  const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/user/');
+    window.location.href = 'http://localhost/user/';
   };
 
   return (

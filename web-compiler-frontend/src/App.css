@@ -40,6 +40,7 @@ textarea:focus {
 button {
   margin-top: 10px;
   margin-left: 15px;
+  margin-right: 15px;
   width: 150px;
   height: 50px;
   padding: 0;
