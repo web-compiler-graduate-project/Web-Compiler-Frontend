@@ -16,6 +16,10 @@ const RegisterPage = () => {
     return regex.test(email);
   };
 
+  const validatePassword = (password) => {
+    return password.length >= 8;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,7 +33,13 @@ const RegisterPage = () => {
       return;
     }
 
+    if (!validatePassword(password)) {
+      setError('Password must be at least 8 characters long');
+      return;
+    }
+
     setError('');
+    setSuccessMessage('');
 
     const userData = { username, email, password };
 
@@ -46,7 +56,7 @@ const RegisterPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        setError(errorData.message || 'Registration failed');
+        setError(errorData.message || 'Registration failed - username or email is already taken.');
         return;
       }
 
