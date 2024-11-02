@@ -3,7 +3,7 @@ import React from 'react';
 const LoginButton = () => {
 
   const handleClick = () => {
-    window.location.href = 'http://localhost/api/user/';
+    window.location.href = 'http://localhost/login/';
   };
 
   return (
