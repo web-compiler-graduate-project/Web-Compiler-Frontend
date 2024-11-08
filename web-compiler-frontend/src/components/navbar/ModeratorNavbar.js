@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import '../css/ModeratorNavbar.css';
+import '../css/moderator-page/ModeratorNavbar.css';
 import AddTask from '../moderator-page/AddTask';
 import TaskManagement from '../moderator-page/TaskManagement';
 import AccountSettings from '../moderator-page/AccountSettings';

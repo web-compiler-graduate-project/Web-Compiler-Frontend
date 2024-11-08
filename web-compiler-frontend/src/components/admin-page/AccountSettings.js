@@ -23,8 +23,8 @@ const AccountSettings = ({ username }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:8084/api/user/update-account', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8084/api/admin/update-account', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

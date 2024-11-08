@@ -61,7 +61,7 @@ function App() {
           />
           <Route
             path="/user/*"
-            element={user && role === ROLE_USER ? <UserNavbar username={user} /> : <div>You do not have access to this page.</div>}
+            element=<UserNavbar username={user} />
           />
         </Routes>
       </div>

@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+.admin-panel-header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffa500;
+  text-align: center;
+  margin: 20px 0 10px;
+  background: rgba(255, 165, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
 .admin-navbar {
   background: linear-gradient(135deg, #444, #333);
   padding: 15px 20px;
@@ -8,7 +21,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   transition: background 0.3s;
 }
 
@@ -55,13 +67,13 @@
   font-weight: 700;
   color: #ffa500;
   font-size: 18px;
-  margin-left: 20px;
   display: flex;
   align-items: center;
   background-color: rgba(255, 165, 0, 0.1);
   padding: 8px 12px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 20px;
   transition: transform 0.2s;
 }
 
@@ -78,9 +90,39 @@
   border-radius: 50%;
 }
 
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #ff6347;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+  background-color: #e5533d;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .admin-navbar-list {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 10px;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import '../css/UserNavbar.css';
+import '../css/user-page/UserNavbar.css';
 import Compile from '../compile/Compile';
 import CompileHistory from '../user-page/CompileHistory';
 import Tasks from '../user-page/Tasks';
@@ -36,7 +36,7 @@ function UserNavbar({ username }) {
         <Route path="compile-history" element={<CompileHistory />} />
         <Route path="tasks" element={<Tasks />} />
         <Route path="tasks-history" element={<TasksHistory />} />
-        <Route path="account-settings" element={<AccountSettings />} />
+        <Route path="account-settings" element={<AccountSettings username={username} />} />
       </Routes>
     </>
   );
