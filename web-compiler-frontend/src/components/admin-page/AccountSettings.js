@@ -23,7 +23,7 @@ const AccountSettings = ({ username }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:8084/api/admin/update-account', {
+      const response = await fetch('http://localhost/api/admin/update-account', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -32,12 +32,11 @@ const AccountSettings = ({ username }) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        setError(errorData.message || 'Failed to update account.');
+        setError('Failed to update account. Please check if you provided correct password.');
         return;
       }
 
-      setSuccessMessage('Account updated successfully!');
+      setSuccessMessage('Account updated successfully! Please log in again with updated credentials to see changes.');
       setNewUsername('');
       setNewEmail('');
       setCurrentPassword('');

@@ -45,7 +45,7 @@ const AddModerator = () => {
     const moderatorData = { username, email, password };
 
     try {
-      const response = await fetch('http://localhost:8084/api/admin/register-moderator', {
+      const response = await fetch('http://localhost/api/admin/register-moderator', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,8 +54,7 @@ const AddModerator = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        setError(errorData.message || 'Registration failed - username or email is already taken.');
+        setError('Registration failed - username or email is already taken.');
         return;
       }
 

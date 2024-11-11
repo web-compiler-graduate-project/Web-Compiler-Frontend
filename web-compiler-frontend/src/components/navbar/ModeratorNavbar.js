@@ -6,7 +6,7 @@ import TaskManagement from '../moderator-page/TaskManagement';
 import AccountSettings from '../moderator-page/AccountSettings';
 
 function ModeratorNavbar({ username }) {
-  return (
+  return ( //TODO add logut button and loading animation (to all update account components)
     <>
       <nav className="moderator-navbar">
         <ul className="moderator-navbar-list">
@@ -26,7 +26,7 @@ function ModeratorNavbar({ username }) {
       <Routes>
         <Route path="add-task" element={<AddTask />} />
         <Route path="task-management" element={<TaskManagement />} />
-        <Route path="account-settings" element={<AccountSettings />} />
+        <Route path="account-settings" element={<AccountSettings username={username}/>} />
       </Routes>
     </>
   );

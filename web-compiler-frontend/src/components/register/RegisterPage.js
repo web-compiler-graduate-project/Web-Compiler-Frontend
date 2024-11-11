@@ -56,8 +56,7 @@ const RegisterPage = () => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        setError(errorData.message || 'Registration failed - username or email is already taken.');
+        setError('Registration failed - username or email is already taken.');
         return;
       }
 
