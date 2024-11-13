@@ -32,7 +32,7 @@ function UserNavbar({ username }) {
       </nav>
 
       <Routes>
-        <Route path="compile" element={<Compile />} />
+        <Route path="compile" element={<Compile username={username} />} />
         <Route path="compile-history" element={<CompileHistory />} />
         <Route path="tasks" element={<Tasks />} />
         <Route path="tasks-history" element={<TasksHistory />} />

@@ -1,9 +1,14 @@
 import React from 'react';
+import '../css/output-display/OutputDisplay.css';
 
 const OutputDisplay = ({ output }) => (
-  <div>
-    <h2 style={{ textAlign: 'left',  marginLeft: '20px', color: 'white' }}>Output:</h2>
-    <pre className="output-pre">{output}</pre>
+  <div className="output-container">
+    <h2 className="output-title">
+      Output:
+    </h2>
+    <pre className="output-code">
+      {output}
+    </pre>
   </div>
 );
 
