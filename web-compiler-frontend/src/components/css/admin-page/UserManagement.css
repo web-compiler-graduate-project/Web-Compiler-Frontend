@@ -29,18 +29,7 @@ tr:nth-child(even) {
   background-color: #3a3a3a;
 }
 
-pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  font-family: monospace;
-  font-size: 14px;
-  background-color: #444;
-  color: #ccc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.delete-button {
+.delete-button, .toggle-block-button {
   background-color: #f44336;
   color: white;
   border: none;
@@ -52,6 +41,14 @@ pre {
 
 .delete-button:hover {
   background-color: #e53935;
+}
+
+.toggle-block-button {
+  background-color: #3498db;
+}
+
+.toggle-block-button:hover {
+  background-color: #2980b9;
 }
 
 h2 {
@@ -79,3 +76,13 @@ p.loading {
   color: #ff9800;
 }
 
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace;
+  font-size: 14px;
+  background-color: #444;
+  color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}

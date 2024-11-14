@@ -3,8 +3,13 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
   font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-header {
@@ -13,7 +18,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  flex-grow: 1;
   padding: 0;
   background-color: #282c34;
   color: white;
@@ -115,4 +120,17 @@ pre .variable { color: #9cdcfe; }
     width: 100px;
     height: 35px;
   }
+}
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }

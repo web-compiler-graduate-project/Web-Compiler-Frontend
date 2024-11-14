@@ -64,6 +64,9 @@ function App() {
             element={user && role === ROLE_USER ? <UserNavbar username={user} /> : <div>You do not have access to this page.</div>}
           />
         </Routes>
+        <footer className="footer">
+          @Copyright Michał Wieczorek
+        </footer>
       </div>
     </Router>
   );
