@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/admin-page/ModeratorManagement.css';
+import '../css/admin-page/ModeratorManagement.module.css';
 
 function ModeratorManagement() {
   const [moderators, setModerators] = useState([]);

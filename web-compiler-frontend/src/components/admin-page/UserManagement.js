@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/admin-page/UserManagement.css';
+import '../css/admin-page/UserManagement.module.css';
 
 function UserManagement() {
   const [users, setUsers] = useState([]);

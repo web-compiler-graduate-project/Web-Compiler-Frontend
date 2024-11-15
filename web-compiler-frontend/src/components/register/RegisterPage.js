@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './RegisterPage.css';
+import '../css/register-page/RegisterPage.css';
 import ProcessingLoader from '../processing-loader/ProcessingLoader';
 import Navbar from '../navbar/Navbar';
 

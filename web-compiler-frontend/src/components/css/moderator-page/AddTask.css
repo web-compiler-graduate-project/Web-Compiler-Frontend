@@ -1,0 +1,76 @@
+/* Scoping all styles to .add-task-component */
+.add-task-component {
+  background-color: #282c34;
+  color: white;
+  margin: 0;
+}
+
+.add-task-component .add-task-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-task-component .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.add-task-component label {
+  margin-right: 10px;
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.add-task-component input,
+.add-task-component textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.add-task-component input:focus,
+.add-task-component textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.add-task-component .submit-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.add-task-component .submit-button:hover {
+  background-color: #0056b3;
+}
+
+.add-task-component .error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.add-task-component .success-message {
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+}

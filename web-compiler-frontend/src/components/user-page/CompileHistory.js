@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/user-page/CompileHistory.css';
+import '../css/user-page/CompileHistory.module.css';
 
 function CompileHistory() {
   const [history, setHistory] = useState([]);
@@ -70,11 +70,15 @@ function CompileHistory() {
             {history.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>
-                  <pre>{item.code}</pre>
+                <td className="code">
+                  <div className="scrollable">
+                    <pre>{item.code}</pre>
+                  </div>
                 </td>
-                <td>
-                  <pre>{item.output}</pre>
+                <td className="output">
+                  <div className="scrollable">
+                    <pre>{item.output}</pre>
+                  </div>
                 </td>
                 <td>
                   <button className="delete-button" onClick={() => handleDelete(item.id)}>
@@ -88,6 +92,6 @@ function CompileHistory() {
       </div>
     </div>
   );
-}
+} //TODO display need to be resolved
 
 export default CompileHistory;

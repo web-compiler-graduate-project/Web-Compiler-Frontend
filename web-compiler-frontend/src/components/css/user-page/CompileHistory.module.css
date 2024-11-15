@@ -4,7 +4,8 @@
   border: 1px solid #444;
   border-radius: 8px;
   background-color: #2c2c2c;
-  overflow-x: auto;
+  overflow: auto; /* Włącz przewijanie zarówno w poziomie, jak i w pionie */
+  max-height: 600px; /* Maksymalna wysokość tabeli */
 }
 
 table {
@@ -12,12 +13,15 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
   color: #ccc;
+  table-layout: fixed; /* Zapewnia, że kolumny mają stałą szerokość */
 }
 
 th, td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #444;
+  word-wrap: break-word;
+  overflow: hidden; /* Zapobiega zawijaniu treści poza komórkę */
 }
 
 th {
@@ -27,6 +31,25 @@ th {
 
 tr:nth-child(even) {
   background-color: #3a3a3a;
+}
+
+/* Przewijanie dla kolumn Code i Output */
+td.code, td.output {
+  width: 300px; /* Równa szerokość dla obu kolumn */
+}
+
+td.code {
+  max-width: 300px;
+}
+
+td.output {
+  max-width: 300px;
+}
+
+td .scrollable {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
 }
 
 pre {
@@ -40,18 +63,20 @@ pre {
   border-radius: 5px;
 }
 
+/* Zmiana stylu przycisku Delete */
 .delete-button {
-  background-color: #f44336;
+  background-color: #f44336; /* Czerwony kolor */
   color: white;
   border: none;
   padding: 8px 16px;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .delete-button:hover {
   background-color: #e53935;
+  transform: scale(1.05);
 }
 
 h2 {
@@ -79,3 +104,18 @@ p.loading {
   color: #ff9800;
 }
 
+@media (max-width: 768px) {
+  th, td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .delete-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
