@@ -1,4 +1,4 @@
-.table-container {
+.tableContainer {
   margin: 20px;
   padding: 10px;
   border: 1px solid #444;
@@ -7,7 +7,7 @@
   overflow-x: auto;
 }
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -29,7 +29,13 @@ tr:nth-child(even) {
   background-color: #3a3a3a;
 }
 
-.delete-button, .toggle-block-button {
+td.buttons {
+  display: flex;
+  gap: 10px; /* Odstęp między przyciskami */
+  justify-content: center; /* Wyrównanie przycisków na środku */
+}
+
+.deleteButton, .toggleBlockButton {
   background-color: #f44336;
   color: white;
   border: none;
@@ -39,19 +45,19 @@ tr:nth-child(even) {
   transition: background-color 0.3s ease;
 }
 
-.delete-button:hover {
+.deleteButton:hover {
   background-color: #e53935;
 }
 
-.toggle-block-button {
+.toggleBlockButton {
   background-color: #3498db;
 }
 
-.toggle-block-button:hover {
+.toggleBlockButton:hover {
   background-color: #2980b9;
 }
 
-h2 {
+.heading {
   font-size: 24px;
   color: #ddd;
   margin-bottom: 20px;

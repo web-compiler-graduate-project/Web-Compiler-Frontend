@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/admin-page/ModeratorManagement.module.css';
+import styles from '../css/admin-page/ModeratorManagement.module.css';  // Zmiana importu CSS na CSS Modules
 
 function ModeratorManagement() {
   const [moderators, setModerators] = useState([]);
@@ -70,14 +70,14 @@ function ModeratorManagement() {
       .catch((err) => setError(`Failed to update block status: ${err.message}`));
   };
 
-  if (loading) return <p>Loading moderators...</p>;
-  if (moderators.length === 0 || error) return <p>No moderators found.</p>;
+  if (loading) return <p className={styles.loading}>Loading moderators...</p>;
+  if (moderators.length === 0 || error) return <p className={styles.error}>No moderators found.</p>;
 
   return (
     <div>
-      <h2>Moderator Management</h2>
-      <div className="table-container">
-        <table>
+      <h2 className={styles.heading}>Moderator Management</h2>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>ID</th>
@@ -94,15 +94,15 @@ function ModeratorManagement() {
                 <td>{mod.username}</td>
                 <td>{mod.email}</td>
                 <td>{mod.isEnabled ? 'Active' : 'Blocked'}</td>
-                <td>
+                <td className={styles.buttons}>  {/* Dodanie klasy dla przycisków */}
                   <button
-                    className="delete-button"
+                    className={styles.deleteButton}
                     onClick={() => handleDelete(mod.id)}
                   >
                     Delete
                   </button>
                   <button
-                    className="toggle-block-button"
+                    className={styles.toggleBlockButton}
                     onClick={() => toggleBlockStatus(mod.id, mod.isEnabled)}
                   >
                     {mod.isEnabled ? 'Block' : 'Unblock'}

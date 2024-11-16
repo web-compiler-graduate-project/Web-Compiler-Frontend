@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/user-page/CompileHistory.module.css';
+import styles from '../css/user-page/CompileHistory.module.css'; // Import CSS Module
 
 function CompileHistory() {
   const [history, setHistory] = useState([]);
@@ -50,38 +50,38 @@ function CompileHistory() {
       .catch((err) => setError(`Failed to delete item: ${err.message}`));
   };
 
-  if (loading) return <p>Loading compilation history...</p>;
-  if (history.length === 0 || error) return <p>No compilation history found.</p>;
+  if (loading) return <p className={styles.loading}>Loading compilation history...</p>;
+  if (history.length === 0 || error) return <p className={styles.error}>No compilation history found.</p>;
 
   return (
     <div>
-      <h2>Compile History</h2>
-      <div className="table-container">
-        <table>
+      <h2 className={styles.heading}>Compile History</h2>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Code</th>
-              <th>Output</th>
-              <th>Actions</th>
+              <th className={styles.header}>ID</th>
+              <th className={styles.header}>Code</th>
+              <th className={styles.header}>Output</th>
+              <th className={styles.header}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {history.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
-                <td className="code">
-                  <div className="scrollable">
+                <td className={styles.code}>
+                  <div className={styles.scrollable}>
                     <pre>{item.code}</pre>
                   </div>
                 </td>
-                <td className="output">
-                  <div className="scrollable">
+                <td className={styles.output}>
+                  <div className={styles.scrollable}>
                     <pre>{item.output}</pre>
                   </div>
                 </td>
                 <td>
-                  <button className="delete-button" onClick={() => handleDelete(item.id)}>
+                  <button className={styles.deleteButton} onClick={() => handleDelete(item.id)}>
                     Delete
                   </button>
                 </td>
@@ -92,6 +92,6 @@ function CompileHistory() {
       </div>
     </div>
   );
-} //TODO display need to be resolved
+}
 
 export default CompileHistory;

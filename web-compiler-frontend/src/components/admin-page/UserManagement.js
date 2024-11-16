@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../css/admin-page/UserManagement.module.css';
+import styles from '../css/admin-page/UserManagement.module.css';  // Zmiana importu CSS na CSS Modules
 
 function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -70,14 +70,14 @@ function UserManagement() {
       .catch((err) => setError(`Failed to update block status: ${err.message}`));
   };
 
-  if (loading) return <p>Loading users...</p>;
-  if (users.length === 0 || error) return <p>No users found.</p>;
+  if (loading) return <p className={styles.loading}>Loading users...</p>;
+  if (users.length === 0 || error) return <p className={styles.error}>No users found.</p>;
 
   return (
     <div>
-      <h2>User Management</h2>
-      <div className="table-container">
-        <table>
+      <h2 className={styles.heading}>User Management</h2>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>ID</th>
@@ -94,15 +94,15 @@ function UserManagement() {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>{user.isEnabled ? 'Active' : 'Blocked'}</td>
-                <td>
+                <td className={styles.buttons}>  {/* Dodanie klasy dla przycisków */}
                   <button
-                    className="delete-button"
+                    className={styles.deleteButton}
                     onClick={() => handleDelete(user.id)}
                   >
                     Delete
                   </button>
                   <button
-                    className="toggle-block-button"
+                    className={styles.toggleBlockButton}
                     onClick={() => toggleBlockStatus(user.id, user.isEnabled)}
                   >
                     {user.isEnabled ? 'Block' : 'Unblock'}
