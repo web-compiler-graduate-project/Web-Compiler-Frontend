@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/admin-page/ModeratorManagement.module.css';  // Zmiana importu CSS na CSS Modules
+import styles from '../css/admin-page/ModeratorManagement.module.css';
 
 function ModeratorManagement() {
   const [moderators, setModerators] = useState([]);
@@ -71,7 +71,7 @@ function ModeratorManagement() {
   };
 
   if (loading) return <p className={styles.loading}>Loading moderators...</p>;
-  if (moderators.length === 0 || error) return <p className={styles.error}>No moderators found.</p>;
+  if (moderators.length === 0 || error) return <p>No moderators found.</p>;
 
   return (
     <div>
@@ -94,7 +94,7 @@ function ModeratorManagement() {
                 <td>{mod.username}</td>
                 <td>{mod.email}</td>
                 <td>{mod.isEnabled ? 'Active' : 'Blocked'}</td>
-                <td className={styles.buttons}>  {/* Dodanie klasy dla przycisków */}
+                <td className={styles.buttons}>
                   <button
                     className={styles.deleteButton}
                     onClick={() => handleDelete(mod.id)}

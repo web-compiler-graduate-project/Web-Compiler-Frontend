@@ -16,7 +16,7 @@
   border-collapse: collapse;
   margin: 0;
   color: #ccc;
-  table-layout: auto; /* auto, aby szerokości kolumn były dostosowane do zawartości */
+  table-layout: auto;
 }
 
 .header {
@@ -28,8 +28,8 @@
 }
 
 .code, .output {
-  width: 25%;  /* Ustawiono na 25% aby kolumny były szersze */
-  max-width: 25%;  /* Zapewnia, że szerokość nie przekroczy tej wartości */
+  width: 25%;
+  max-width: 25%;
 }
 
 .scrollable {

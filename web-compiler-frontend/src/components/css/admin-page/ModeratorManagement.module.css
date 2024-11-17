@@ -31,8 +31,8 @@ tr:nth-child(even) {
 
 td.buttons {
   display: flex;
-  gap: 10px; /* Odstęp między przyciskami */
-  justify-content: center; /* Wyrównanie przycisków na środku */
+  gap: 10px;
+  justify-content: center;
 }
 
 .deleteButton, .toggleBlockButton {

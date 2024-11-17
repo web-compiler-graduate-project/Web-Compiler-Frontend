@@ -51,7 +51,7 @@ function CompileHistory() {
   };
 
   if (loading) return <p className={styles.loading}>Loading compilation history...</p>;
-  if (history.length === 0 || error) return <p className={styles.error}>No compilation history found.</p>;
+  if (history.length === 0 || error) return <p>No compilation history found.</p>;
 
   return (
     <div>

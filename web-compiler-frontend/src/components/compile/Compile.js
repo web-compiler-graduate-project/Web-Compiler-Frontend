@@ -4,6 +4,7 @@ import OutputDisplay from './OutputDisplay';
 import Loader from './compile-loader/Loader';
 import Navbar from '../navbar/Navbar';
 import { compileCode } from '../../services/compileService';
+import '../css/pop-up/PopUp.css';
 
 class Compile extends Component {
   constructor(props) {
@@ -12,8 +13,37 @@ class Compile extends Component {
       code: '',
       output: '',
       isLoading: false,
+      isTaskAssigned: false,
+      taskDetails: null,
+      isPopupExpanded: false,
     };
   }
+
+  componentDidMount() {
+    this.checkTaskAssignment();
+  }
+
+  checkTaskAssignment = async () => {
+    try {
+      const response = await fetch('http://localhost/api/user/is-task-assigned', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const data = await response.json();
+      if (data) {
+        const taskResponse = await fetch('http://localhost/api/user/assigned-task-details');
+        const taskDetails = await taskResponse.json();
+        this.setState({ isTaskAssigned: true, taskDetails });
+      }
+    } catch (error) {
+      console.error('Error checking task assignment:', error.message);
+    }
+  };
 
   handleCodeChange = (code) => {
     this.setState({ code });
@@ -36,7 +66,6 @@ class Compile extends Component {
       if (username) {
         await this.saveCompilationResult(username, code, result.output);
       }
-
     } catch (error) {
       this.setState({ output: `An error occurred during compilation: ${error.message}` });
     } finally {
@@ -63,13 +92,40 @@ class Compile extends Component {
     }
   };
 
+  togglePopupExpansion = () => {
+    this.setState((prevState) => ({ isPopupExpanded: !prevState.isPopupExpanded }));
+  };
+
+  renderPopup = () => {
+    const { taskDetails, isPopupExpanded } = this.state;
+    if (!taskDetails) return null;
+
+    return (
+      <div className={`popup ${isPopupExpanded ? 'expanded' : 'collapsed'}`} onClick={this.togglePopupExpansion}>
+        <div className="popup-content">
+          {isPopupExpanded ? (
+            <>
+              <h2>{taskDetails.title}</h2>
+              <p>{taskDetails.description}</p>
+            </>
+          ) : (
+            <div className="popup-arrow">
+              {isPopupExpanded ? '' : '←'}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   render() {
-    const { code, output, isLoading } = this.state;
+    const { code, output, isLoading, isTaskAssigned } = this.state;
 
     return (
       <>
         <Navbar onCompile={this.handleSubmit} />
         <header className="App-header">
+          {this.renderPopup()}
           <CodeInput code={code} setCode={this.handleCodeChange} />
           {isLoading ? <Loader /> : <OutputDisplay output={output} />}
         </header>

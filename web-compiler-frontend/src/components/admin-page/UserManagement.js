@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/admin-page/UserManagement.module.css';  // Zmiana importu CSS na CSS Modules
+import styles from '../css/admin-page/UserManagement.module.css';
 
 function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -71,7 +71,7 @@ function UserManagement() {
   };
 
   if (loading) return <p className={styles.loading}>Loading users...</p>;
-  if (users.length === 0 || error) return <p className={styles.error}>No users found.</p>;
+  if (users.length === 0 || error) return <p>No users found.</p>;
 
   return (
     <div>
@@ -94,7 +94,7 @@ function UserManagement() {
                 <td>{user.username}</td>
                 <td>{user.email}</td>
                 <td>{user.isEnabled ? 'Active' : 'Blocked'}</td>
-                <td className={styles.buttons}>  {/* Dodanie klasy dla przycisków */}
+                <td className={styles.buttons}>
                   <button
                     className={styles.deleteButton}
                     onClick={() => handleDelete(user.id)}
