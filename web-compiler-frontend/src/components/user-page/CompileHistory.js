@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../css/user-page/CompileHistory.module.css'; // Import CSS Module
+import styles from '../css/user-page/CompileHistory.module.css';
 
 function CompileHistory() {
   const [history, setHistory] = useState([]);

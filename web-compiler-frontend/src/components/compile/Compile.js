@@ -16,6 +16,7 @@ class Compile extends Component {
       isTaskAssigned: false,
       taskDetails: null,
       isPopupExpanded: false,
+      isConfirmationVisible: false,
     };
   }
 
@@ -96,6 +97,41 @@ class Compile extends Component {
     this.setState((prevState) => ({ isPopupExpanded: !prevState.isPopupExpanded }));
   };
 
+  showConfirmationPopup = () => {
+    this.setState({ isConfirmationVisible: true });
+  };
+
+  hideConfirmationPopup = () => {
+    this.setState({ isConfirmationVisible: false });
+  };
+
+  confirmAndSubmitSolution = async () => {
+    try {
+      const response = await fetch('http://localhost/api/user/submit-solution', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: this.props.username }),
+      });
+
+      if (response.status === 201) {
+        const result = await response.text();
+        console.log(result);
+        alert(result);
+      } else {
+        const errorResult = await response.text();
+        console.error(errorResult);
+        alert(`Please compile solution one more time.`);
+      }
+    } catch (error) {
+      console.error('Error submitting solution:', error.message);
+      alert(`Please compile solution one more time.`);
+    } finally {
+      this.hideConfirmationPopup();
+    }
+  };
+
   renderPopup = () => {
     const { taskDetails, isPopupExpanded } = this.state;
     if (!taskDetails) return null;
@@ -107,12 +143,37 @@ class Compile extends Component {
             <>
               <h2>{taskDetails.title}</h2>
               <p>{taskDetails.description}</p>
+              <p>INFO: Last compilation result stored in history will be treated as solution.</p>
+              <button className="submit-solution-button" onClick={this.showConfirmationPopup}>
+                Submit
+              </button>
             </>
           ) : (
             <div className="popup-arrow">
               {isPopupExpanded ? '' : '←'}
             </div>
           )}
+        </div>
+      </div>
+    );
+  };
+
+  renderConfirmationPopup = () => {
+    const { isConfirmationVisible } = this.state;
+    if (!isConfirmationVisible) return null;
+
+    return (
+      <div className="confirmation-popup">
+        <div className="confirmation-content">
+          <p>Are you sure you want to submit solution? There is no way back.</p>
+          <div className="confirmation-buttons">
+            <button className="confirm-button" onClick={this.confirmAndSubmitSolution}>
+              Yes
+            </button>
+            <button className="cancel-button" onClick={this.hideConfirmationPopup}>
+              No
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -126,6 +187,7 @@ class Compile extends Component {
         <Navbar onCompile={this.handleSubmit} />
         <header className="App-header">
           {this.renderPopup()}
+          {this.renderConfirmationPopup()}
           <CodeInput code={code} setCode={this.handleCodeChange} />
           {isLoading ? <Loader /> : <OutputDisplay output={output} />}
         </header>

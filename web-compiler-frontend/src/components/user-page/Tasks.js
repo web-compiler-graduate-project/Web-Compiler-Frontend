@@ -70,6 +70,7 @@ function Tasks() {
         }
         fetchTasks();
         checkTaskAssignment();
+        alert('Successful task assignment!');
       })
       .catch((err) => setError(`Failed to register in task: ${err.message}`));
   };
