@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../css/moderator-page/TaskManagement.module.css';
+import SolutionReview from './SolutionReview';
 
 function TaskManagement() {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showReview, setShowReview] = useState(false);
+  const [selectedSolutions, setSelectedSolutions] = useState([]);
 
   useEffect(() => {
     fetchTasks();
@@ -32,6 +35,15 @@ function TaskManagement() {
         setError(err.message);
         setLoading(false);
       });
+  };
+
+  const handleReviewClick = (solutions) => {
+    if (solutions.length > 0) {
+      setSelectedSolutions(solutions);
+      setShowReview(true);
+    } else {
+      alert('No solutions available for this task.');
+    }
   };
 
   const handleDelete = (id) => {
@@ -70,10 +82,38 @@ function TaskManagement() {
       .catch((err) => setError(`Failed to update task status: ${err.message}`));
   };
 
+  const handleGradeSolution = (solutionId, grade, comment) => {
+    const gradeRequest = {
+      grade: grade,
+      comments: comment,
+    };
+
+    fetch(`http://localhost/api/moderator/solutions/${solutionId}/grade`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(gradeRequest),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        alert('Solution graded successfully!');
+      })
+      .catch((err) => alert(`Failed to grade solution: ${err.message}`));
+  };
+
   if (loading) return <p className={styles.loading}>Loading tasks...</p>;
   if (tasks.length === 0 || error) return <p>No tasks found.</p>;
 
-  return (
+  return showReview && selectedSolutions.length > 0 ? (
+    <SolutionReview
+      solutions={selectedSolutions}
+      onBack={() => setShowReview(false)}
+      onGrade={handleGradeSolution}
+    />
+  ) : (
     <div>
       <h2>Task Management</h2>
       {error && <p className={styles.error}>{error}</p>}
@@ -96,9 +136,11 @@ function TaskManagement() {
                 <td>{task.id}</td>
                 <td>{task.title}</td>
                 <td>
-                  <div className={styles.descriptionContainer}>
-                    {task.description}
-                  </div>
+                  <textarea
+                    className={styles.descriptionContainer}
+                    value={task.description}
+                    readOnly={true}
+                  />
                 </td>
                 <td>{task.assignedUsersCount}</td>
                 <td>{task.solutionCount}</td>
@@ -115,6 +157,12 @@ function TaskManagement() {
                     onClick={() => toggleTaskStatus(task.id, task.isEnabled)}
                   >
                     {task.isEnabled ? 'Block' : 'Unblock'}
+                  </button>
+                  <button
+                    className={styles.reviewButton}
+                    onClick={() => handleReviewClick(task.solutions)}
+                  >
+                    Review Solutions
                   </button>
                 </td>
               </tr>
