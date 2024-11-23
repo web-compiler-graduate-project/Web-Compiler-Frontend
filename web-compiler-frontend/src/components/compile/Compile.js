@@ -119,6 +119,7 @@ class Compile extends Component {
         const result = await response.text();
         console.log(result);
         alert(result);
+        window.location.reload();
       } else {
         const errorResult = await response.text();
         console.error(errorResult);

@@ -50,7 +50,7 @@ function CompileHistory() {
       .catch((err) => setError(`Failed to delete item: ${err.message}`));
   };
 
-  if (loading) return <p className={styles.loading}>Loading compilation history...</p>;
+  if (loading) return <p>Loading compilation history...</p>;
   if (history.length === 0 || error) return <p>No compilation history found.</p>;
 
   return (
