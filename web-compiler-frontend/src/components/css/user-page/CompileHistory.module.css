@@ -85,3 +85,9 @@ pre {
   font-size: 16px;
   text-align: center;
 }
+
+.downloadButton svg {
+  vertical-align: middle;
+  font-size: 16px;
+}
+

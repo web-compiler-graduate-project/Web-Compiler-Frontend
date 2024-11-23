@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../css/user-page/CompileHistory.module.css';
+import { FaDownload } from 'react-icons/fa';
 
 function CompileHistory() {
   const [history, setHistory] = useState([]);
@@ -50,6 +51,32 @@ function CompileHistory() {
       .catch((err) => setError(`Failed to delete item: ${err.message}`));
   };
 
+  const handleDownload = (id) => {
+  fetch(`http://localhost/api/user/user-compilation-history/${id}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      return response.blob();
+    })
+    .then((blob) => {
+      const url = window.URL.createObjectURL(new Blob([blob]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `compilation_result_${id}.zip`);
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+    })
+    .catch((err) => setError(`Failed to download file: ${err.message}`));
+};
+
+
   if (loading) return <p>Loading compilation history...</p>;
   if (history.length === 0 || error) return <p>No compilation history found.</p>;
 
@@ -83,6 +110,9 @@ function CompileHistory() {
                 <td>
                   <button className={styles.deleteButton} onClick={() => handleDelete(item.id)}>
                     Delete
+                  </button>
+                  <button className={styles.downloadButton} onClick={() => handleDownload(item.id)}>
+                    <FaDownload />
                   </button>
                 </td>
               </tr>
