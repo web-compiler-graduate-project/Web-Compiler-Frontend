@@ -1,19 +1,18 @@
-/* Globalne style dla tabel */
 table {
   width: 100%;
   border-collapse: collapse;
   border-radius: 12px;
   overflow: hidden;
   table-layout: fixed;
-  background-color: #fff; /* Tło tabeli */
+  background-color: #fff;
 }
 
 thead th {
-  background-color: #333; /* Ciemnoszary kolor tła nagłówka */
-  color: #fff; /* Biały kolor tekstu nagłówka */
-  padding: 10px 15px; /* Większe odstępy w nagłówkach */
-  text-align: left; /* Wyrównanie tekstu w lewo */
-  font-weight: bold; /* Pogrubienie tekstu nagłówka */
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  text-align: left;
+  font-weight: bold;
 }
 
 tbody tr {

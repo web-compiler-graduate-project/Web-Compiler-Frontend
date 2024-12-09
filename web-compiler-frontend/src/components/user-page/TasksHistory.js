@@ -5,10 +5,9 @@ function TasksHistory() {
   const [taskSolutions, setTaskSolutions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [viewCode, setViewCode] = useState(null); // State for viewing code
-  const [viewOutput, setViewOutput] = useState(null); // State for viewing output
+  const [viewCode, setViewCode] = useState(null);
+  const [viewOutput, setViewOutput] = useState(null);
 
-  // Fetch task solutions from the API
   useEffect(() => {
     fetch('http://localhost/api/user/task-solutions')
       .then((response) => response.json())
@@ -22,7 +21,6 @@ function TasksHistory() {
       });
   }, []);
 
-  // Function to render stars based on the grade (up to 10 stars)
   const renderStars = (grade) => {
     const stars = [];
     for (let i = 1; i <= 10; i++) {
@@ -38,7 +36,6 @@ function TasksHistory() {
     return stars;
   };
 
-  // Render loading, error, or the task solutions table
   if (loading) return <p className={styles.loading}>Loading task solutions...</p>;
   if (error) return <p className={styles.error}>{error}</p>;
   if (taskSolutions.length === 0) return <p>No task solutions available.</p>;
@@ -75,7 +72,7 @@ function TasksHistory() {
                 <td>
                   <button
                     className={styles.viewButton}
-                    onClick={() => setViewCode(solution.code)} // Set code to view
+                    onClick={() => setViewCode(solution.code)}
                   >
                     View Code
                   </button>
@@ -83,7 +80,7 @@ function TasksHistory() {
                 <td>
                   <button
                     className={styles.viewButton}
-                    onClick={() => setViewOutput(solution.output)} // Set output to view
+                    onClick={() => setViewOutput(solution.output)}
                   >
                     View Output
                   </button>
@@ -94,7 +91,6 @@ function TasksHistory() {
         </table>
       </div>
 
-      {/* Modal to view code */}
       {viewCode && (
         <div className={styles.modal}>
           <pre>{viewCode}</pre>
@@ -104,7 +100,6 @@ function TasksHistory() {
         </div>
       )}
 
-      {/* Modal to view output */}
       {viewOutput && (
         <div className={styles.modal}>
           <pre>{viewOutput}</pre>

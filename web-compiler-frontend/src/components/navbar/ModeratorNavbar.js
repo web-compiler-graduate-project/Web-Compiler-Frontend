@@ -7,7 +7,7 @@ import AccountSettings from '../moderator-page/AccountSettings';
 import LogoutButton from '../button/LogoutButton';
 
 function ModeratorNavbar({ username }) {
-  return ( //TODO add logut button and loading animation (to all update account components)
+  return (
     <>
       <div className="moderator-panel-header">Moderator Panel</div>
       <nav className="moderator-navbar">
