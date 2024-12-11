@@ -12,7 +12,7 @@ function UserManagement() {
 
   const fetchUsers = () => {
     setLoading(true);
-    fetch('http://localhost/api/admin/users', {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/users`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function UserManagement() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost/api/admin/users/${id}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/users/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function UserManagement() {
   };
 
   const toggleBlockStatus = (id, isEnabled) => {
-    fetch(`http://localhost/api/admin/users/${id}/block?isEnabled=${!isEnabled}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/users/${id}/block?isEnabled=${!isEnabled}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ function UserManagement() {
       .catch((err) => setError(`Failed to update block status: ${err.message}`));
   };
 
-  if (loading) return <p className={styles.loading}>Loading users...</p>;
+  if (loading) return <p>Loading users...</p>;
   if (users.length === 0 || error) return <p>No users found.</p>;
 
   return (

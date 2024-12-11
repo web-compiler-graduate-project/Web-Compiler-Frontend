@@ -26,7 +26,7 @@ class Compile extends Component {
 
   checkTaskAssignment = async () => {
     try {
-      const response = await fetch('http://localhost/api/user/is-task-assigned', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/user/is-task-assigned`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ class Compile extends Component {
       }
       const data = await response.json();
       if (data) {
-        const taskResponse = await fetch('http://localhost/api/user/assigned-task-details');
+        const taskResponse = await fetch(`${process.env.REACT_APP_HOST}/api/user/assigned-task-details`);
         const taskDetails = await taskResponse.json();
         this.setState({ isTaskAssigned: true, taskDetails });
       }
@@ -107,7 +107,7 @@ class Compile extends Component {
 
   confirmAndSubmitSolution = async () => {
     try {
-      const response = await fetch('http://localhost/api/user/submit-solution', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/user/submit-solution`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

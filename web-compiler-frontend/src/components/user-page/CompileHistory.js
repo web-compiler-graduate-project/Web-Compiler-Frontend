@@ -13,7 +13,7 @@ function CompileHistory() {
 
   const fetchHistory = () => {
     setLoading(true);
-    fetch('http://localhost/api/user/user-compilation-history', {
+    fetch(`${process.env.REACT_APP_HOST}/api/user/user-compilation-history`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ function CompileHistory() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost/api/user/user-compilation-history/${id}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/user/user-compilation-history/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ function CompileHistory() {
   };
 
   const handleDownload = (id) => {
-  fetch(`http://localhost/api/user/user-compilation-history/${id}`, {
+  fetch(`${process.env.REACT_APP_HOST}/api/user/user-compilation-history/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ import React from 'react';
 const SignUpButton = () => {
 
     const handleClick = () => {
-    window.location.href = 'http://localhost/register/';
+    window.location.href = `${process.env.REACT_APP_HOST}/register/`;
   };
 
   return (

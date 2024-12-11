@@ -12,7 +12,7 @@ function ModeratorManagement() {
 
   const fetchModerators = () => {
     setLoading(true);
-    fetch('http://localhost/api/admin/moderators', {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/moderators`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function ModeratorManagement() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost/api/admin/moderators/${id}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/moderators/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function ModeratorManagement() {
   };
 
   const toggleBlockStatus = (id, isEnabled) => {
-    fetch(`http://localhost/api/admin/moderators/${id}/block?isEnabled=${!isEnabled}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/admin/moderators/${id}/block?isEnabled=${!isEnabled}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ function ModeratorManagement() {
       .catch((err) => setError(`Failed to update block status: ${err.message}`));
   };
 
-  if (loading) return <p className={styles.loading}>Loading moderators...</p>;
+  if (loading) return <p>Loading moderators...</p>;
   if (moderators.length === 0 || error) return <p>No moderators found.</p>;
 
   return (

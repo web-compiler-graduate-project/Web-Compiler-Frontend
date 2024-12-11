@@ -13,7 +13,7 @@ function Tasks() {
   }, []);
 
   const checkTaskAssignment = () => {
-  fetch('http://localhost/api/user/is-task-assigned', {
+  fetch(`${process.env.REACT_APP_HOST}/api/user/is-task-assigned`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function Tasks() {
 
   const fetchTasks = () => {
     setLoading(true);
-    fetch('http://localhost/api/user/tasks', {
+    fetch(`${process.env.REACT_APP_HOST}/api/user/tasks`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function Tasks() {
   };
 
   const handleRegister = (taskId) => {
-    fetch(`http://localhost/api/user/register-in-task/${taskId}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/user/register-in-task/${taskId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function Tasks() {
       .catch((err) => setError(`Failed to register in task: ${err.message}`));
   };
 
-  if (loading) return <p className={styles.loading}>Loading tasks...</p>;
+  if (loading) return <p>Loading tasks...</p>;
   if (error) return <p>No available tasks found.</p>;
 
   if (isTaskAssigned) {

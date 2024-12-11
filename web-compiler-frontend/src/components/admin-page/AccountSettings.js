@@ -23,7 +23,7 @@ const AccountSettings = ({ username }) => {
     };
 
     try {
-      const response = await fetch('http://localhost/api/admin/update-account', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/admin/update-account`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

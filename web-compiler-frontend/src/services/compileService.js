@@ -1,7 +1,7 @@
 export const compileCode = async (code) => {
   try {
 
-    const response = await fetch('http://localhost:3001/compile', {
+    const response = await fetch(`${process.env.REACT_APP_HOST}:3001/compile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

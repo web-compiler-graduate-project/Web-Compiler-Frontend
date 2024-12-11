@@ -3,7 +3,7 @@ import React from 'react';
 const BackButton = () => {
 
   const handleClick = () => {
-    window.location.href = 'http://localhost/';
+    window.location.href = `${process.env.REACT_APP_HOST}/`;
   };
 
   return (

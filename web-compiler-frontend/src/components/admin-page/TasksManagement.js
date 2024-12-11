@@ -13,7 +13,7 @@ function TasksManagement() {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost/api/admin/tasks');
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/admin/tasks`);
       if (!response.ok) throw new Error('Failed to fetch tasks');
       const data = await response.json();
       setTasks(data);
@@ -26,7 +26,7 @@ function TasksManagement() {
 
   const deleteTask = async (taskId) => {
     try {
-      const response = await fetch(`http://localhost/api/admin/tasks/${taskId}`, { method: 'DELETE' });
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/admin/tasks/${taskId}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Failed to delete task');
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
     } catch (err) {
@@ -36,7 +36,7 @@ function TasksManagement() {
 
   const toggleBlockTask = async (taskId) => {
     try {
-      const response = await fetch(`http://localhost/api/admin/tasks/${taskId}/block`, { method: 'PUT' });
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/admin/tasks/${taskId}/block`, { method: 'PUT' });
       if (!response.ok) throw new Error('Failed to toggle task status');
       setTasks((prevTasks) =>
         prevTasks.map((task) => (task.id === taskId ? { ...task, isEnabled: !task.isEnabled } : task))
@@ -46,9 +46,9 @@ function TasksManagement() {
     }
   };
 
-  if (loading) return <p className={styles.loading}>Loading tasks...</p>;
+  if (loading) return <p>Loading tasks...</p>;
   if (error) return <p className={styles.error}>{error}</p>;
-  if (tasks.length === 0) return <p className={styles.error}>No tasks found.</p>;
+  if (tasks.length === 0) return <p>No tasks found.</p>;
 
   return (
     <div>

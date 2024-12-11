@@ -21,7 +21,7 @@ const AddTask = () => {
     };
 
     try {
-      const response = await fetch('http://localhost/api/moderator/add-task', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/moderator/add-task`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

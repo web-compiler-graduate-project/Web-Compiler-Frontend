@@ -3,7 +3,7 @@ import React from 'react';
 const LogoutButton = () => {
 
     const handleClick = () => {
-    window.location.href = 'http://localhost/logout';
+    window.location.href = `${process.env.REACT_APP_HOST}/logout`;
   };
 
   return (

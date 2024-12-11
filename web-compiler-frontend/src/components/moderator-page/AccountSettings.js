@@ -23,7 +23,7 @@ const ModeratorAccountSettings = ({ username }) => {
     };
 
     try {
-      const response = await fetch('http://localhost/api/moderator/update-account', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/moderator/update-account`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

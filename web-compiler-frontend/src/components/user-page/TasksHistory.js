@@ -9,7 +9,7 @@ function TasksHistory() {
   const [viewOutput, setViewOutput] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost/api/user/task-solutions')
+    fetch(`${process.env.REACT_APP_HOST}/api/user/task-solutions`)
       .then((response) => response.json())
       .then((data) => {
         setTaskSolutions(data);
@@ -36,8 +36,8 @@ function TasksHistory() {
     return stars;
   };
 
-  if (loading) return <p className={styles.loading}>Loading task solutions...</p>;
-  if (error) return <p className={styles.error}>{error}</p>;
+  if (loading) return <p>Loading task solutions...</p>;
+  if (error) return <p>{error}</p>;
   if (taskSolutions.length === 0) return <p>No task solutions available.</p>;
 
   return (

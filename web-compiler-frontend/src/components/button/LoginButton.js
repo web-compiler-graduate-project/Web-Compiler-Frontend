@@ -3,7 +3,7 @@ import React from 'react';
 const LoginButton = () => {
 
   const handleClick = () => {
-    window.location.href = 'http://localhost/login/';
+    window.location.href = `${process.env.REACT_APP_HOST}/login/`;
   };
 
   return (

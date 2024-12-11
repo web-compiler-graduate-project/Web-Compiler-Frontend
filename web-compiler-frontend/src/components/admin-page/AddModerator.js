@@ -45,7 +45,7 @@ const AddModerator = () => {
     const moderatorData = { username, email, password };
 
     try {
-      const response = await fetch('http://localhost/api/admin/register-moderator', {
+      const response = await fetch(`${process.env.REACT_APP_HOST}/api/admin/register-moderator`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

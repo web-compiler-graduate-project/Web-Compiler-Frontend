@@ -15,7 +15,7 @@ function TaskManagement() {
 
   const fetchTasks = () => {
     setLoading(true);
-    fetch('http://localhost/api/moderator/tasks', {
+    fetch(`${process.env.REACT_APP_HOST}/api/moderator/tasks`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ function TaskManagement() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost/api/moderator/tasks/${id}`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/moderator/tasks/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ function TaskManagement() {
   };
 
   const toggleTaskStatus = (id, isEnabled) => {
-    fetch(`http://localhost/api/moderator/tasks/${id}/block`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/moderator/tasks/${id}/block`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ function TaskManagement() {
       comments: comment,
     };
 
-    fetch(`http://localhost/api/moderator/solutions/${solutionId}/grade`, {
+    fetch(`${process.env.REACT_APP_HOST}/api/moderator/solutions/${solutionId}/grade`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function TaskManagement() {
       .catch((err) => alert(`Failed to grade solution: ${err.message}`));
   };
 
-  if (loading) return <p className={styles.loading}>Loading tasks...</p>;
+  if (loading) return <p>Loading tasks...</p>;
   if (tasks.length === 0 || error) return <p>No tasks found.</p>;
 
   return showReview && selectedSolutions.length > 0 ? (
