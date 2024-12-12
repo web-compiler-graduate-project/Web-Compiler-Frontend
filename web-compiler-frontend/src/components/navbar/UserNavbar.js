@@ -6,6 +6,7 @@ import CompileHistory from '../user-page/CompileHistory';
 import Tasks from '../user-page/Tasks';
 import TasksHistory from '../user-page/TasksHistory';
 import AccountSettings from '../user-page/AccountSettings';
+import LogoutButton from '../button/LogoutButton';
 
 function UserNavbar({ username }) {
   return (
@@ -28,7 +29,10 @@ function UserNavbar({ username }) {
             <Link to="account-settings">Account Settings</Link>
           </li>
         </ul>
-        <div className="user-info">Logged in as: {username}</div>
+        <div className="user-actions">
+          <div className="user-info">Logged in as: {username}</div>
+          <LogoutButton className="logout-button"/>
+        </div>
       </nav>
 
       <Routes>

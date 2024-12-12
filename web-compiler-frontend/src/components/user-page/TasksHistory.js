@@ -45,7 +45,7 @@ function TasksHistory() {
       <h2>Task Solutions History</h2>
 
       <div className={styles.tableContainer}>
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Task Name</th>
@@ -62,13 +62,19 @@ function TasksHistory() {
                 <td>{solution.taskName}</td>
                 <td>
                   <textarea
-                    className={styles.descriptionContainer}
+                    className={styles.customTextarea}
                     value={solution.taskDescription || 'No description available.'}
                     readOnly
                   />
                 </td>
                 <td>{renderStars(solution.grade)}</td>
-                <td>{solution.comments || 'No comments available.'}</td>
+                <td>
+                   <textarea
+                     className={styles.customTextarea}
+                     value={solution.comments || 'No comments available.'}
+                     readOnly
+                   />
+                </td>
                 <td>
                   <button
                     className={styles.viewButton}

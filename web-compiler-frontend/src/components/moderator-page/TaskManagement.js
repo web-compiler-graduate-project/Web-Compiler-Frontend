@@ -118,57 +118,65 @@ function TaskManagement() {
       <h2>Task Management</h2>
       {error && <p className={styles.error}>{error}</p>}
       <div className={styles.tableContainer}>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Assigned Users</th>
-              <th>Solutions Count</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tasks.map((task) => (
-              <tr key={task.id}>
-                <td>{task.id}</td>
-                <td>{task.title}</td>
-                <td>
-                  <textarea
-                    className={styles.descriptionContainer}
-                    value={task.description}
-                    readOnly={true}
-                  />
-                </td>
-                <td>{task.assignedUsersCount}</td>
-                <td>{task.solutionCount}</td>
-                <td>{task.isEnabled ? 'Active' : 'Blocked'}</td>
-                <td>
-                  <button
-                    className={styles.deleteButton}
-                    onClick={() => handleDelete(task.id)}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    className={styles.toggleBlockButton}
-                    onClick={() => toggleTaskStatus(task.id, task.isEnabled)}
-                  >
-                    {task.isEnabled ? 'Block' : 'Unblock'}
-                  </button>
-                  <button
-                    className={styles.reviewButton}
-                    onClick={() => handleReviewClick(task.solutions)}
-                  >
-                    Review Solutions
-                  </button>
-                </td>
+        <div className={styles.scrollable}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Assigned Users</th>
+                <th>Solutions Count</th>
+                <th>Status</th>
+                <th>Delete</th>
+                <th>Block/Unblock</th>
+                <th>Review</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {tasks.map((task) => (
+                <tr key={task.id}>
+                  <td>{task.id}</td>
+                  <td>{task.title}</td>
+                  <td>
+                    <textarea
+                      className={styles.taskDescriptionTextarea}
+                      value={task.description}
+                      readOnly
+                    />
+                  </td>
+                  <td>{task.assignedUsersCount}</td>
+                  <td>{task.solutionCount}</td>
+                  <td>{task.isEnabled ? 'Active' : 'Blocked'}</td>
+                  <td>
+                    <button
+                      className={styles.deleteButton}
+                      onClick={() => handleDelete(task.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className={styles.toggleBlockButton}
+                      onClick={() => toggleTaskStatus(task.id, task.isEnabled)}
+                    >
+                      {task.isEnabled ? 'Block' : 'Unblock'}
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      className={styles.reviewButton}
+                      onClick={() => handleReviewClick(task.solutions)}
+                    >
+                      Review
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ function AdminNavbar({ username }) {
         </ul>
         <div className="admin-actions">
           <div className="admin-info">Logged in as: {username}</div>
-          <LogoutButton />
+          <LogoutButton className="logout-button"/>
         </div>
       </nav>
 

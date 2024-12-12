@@ -84,7 +84,8 @@ function ModeratorManagement() {
               <th>Username</th>
               <th>Email</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Delete</th>
+              <th>Block/Unblock</th>
             </tr>
           </thead>
           <tbody>
@@ -101,6 +102,8 @@ function ModeratorManagement() {
                   >
                     Delete
                   </button>
+                </td>
+                <td>
                   <button
                     className={styles.toggleBlockButton}
                     onClick={() => toggleBlockStatus(mod.id, mod.isEnabled)}

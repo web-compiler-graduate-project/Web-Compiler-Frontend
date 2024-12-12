@@ -90,7 +90,8 @@ function CompileHistory() {
               <th className={styles.header}>ID</th>
               <th className={styles.header}>Code</th>
               <th className={styles.header}>Output</th>
-              <th className={styles.header}>Actions</th>
+              <th className={styles.header}>Delete</th>
+              <th className={styles.header}>Download</th>
             </tr>
           </thead>
           <tbody>
@@ -111,9 +112,11 @@ function CompileHistory() {
                   <button className={styles.deleteButton} onClick={() => handleDelete(item.id)}>
                     Delete
                   </button>
-                  <button className={styles.downloadButton} onClick={() => handleDownload(item.id)}>
-                    <FaDownload />
-                  </button>
+                </td>
+                <td>
+                   <button className={styles.downloadButton} onClick={() => handleDownload(item.id)}>
+                     <FaDownload />
+                   </button>
                 </td>
               </tr>
             ))}

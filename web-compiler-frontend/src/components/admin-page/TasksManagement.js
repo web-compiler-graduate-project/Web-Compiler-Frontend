@@ -54,7 +54,7 @@ function TasksManagement() {
     <div>
       <h2>Tasks Management</h2>
       <div className={styles.tableContainer}>
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>ID</th>
@@ -65,7 +65,8 @@ function TasksManagement() {
               <th>Moderator Name</th>
               <th>Moderator Email</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Delete</th>
+              <th>Block/Unblock</th>
             </tr>
           </thead>
           <tbody>
@@ -85,12 +86,14 @@ function TasksManagement() {
                   <button className={styles.deleteButton} onClick={() => deleteTask(task.id)}>
                     Delete
                   </button>
+                </td>
+                <td>
                   <button
-                    className={styles.toggleBlockButton}
-                    onClick={() => toggleBlockTask(task.id)}
+                   className={styles.toggleBlockButton}
+                   onClick={() => toggleBlockTask(task.id)}
                   >
-                    {task.isEnabled ? 'Block' : 'Unblock'}
-                  </button>
+                   {task.isEnabled ? 'Block' : 'Unblock'}
+                 </button>
                 </td>
               </tr>
             ))}

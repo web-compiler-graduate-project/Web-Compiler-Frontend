@@ -88,7 +88,7 @@ function Tasks() {
 
   return (
     <div>
-      <h2 className={styles.heading}>Task Management</h2>
+      <h2 className={styles.heading}>Available Tasks</h2>
       <div className={styles.tableContainer}>
         <table className={styles.table}>
           <thead>

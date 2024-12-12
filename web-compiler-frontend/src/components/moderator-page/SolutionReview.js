@@ -37,18 +37,8 @@ function SolutionReview({ solutions, onBack, onGrade }) {
   return (
     <div className={styles.container}>
       <h2>Review Solutions</h2>
-
       <div className={styles.tableContainer}>
-        <table>
-          <colgroup>
-            <col style={{ width: '8%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '14%' }} />
-            <col style={{ width: '16%' }} />
-            <col style={{ width: '20%' }} />
-          </colgroup>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>ID</th>
@@ -109,7 +99,7 @@ function SolutionReview({ solutions, onBack, onGrade }) {
                     onChange={(e) =>
                       handleReviewChange(solution.id, 'comment', e.target.value)
                     }
-                    className={styles.commentBox}
+                    className={styles.commentsTextarea}
                   />
                 </td>
               </tr>
@@ -143,10 +133,10 @@ function SolutionReview({ solutions, onBack, onGrade }) {
 
       <div className={styles.buttonsContainer}>
         <button onClick={onBack} className={styles.backButton}>
-          Back to Tasks
+          Back
         </button>
         <button onClick={handleSubmit} className={styles.submitButton}>
-          Submit Reviews
+          Submit
         </button>
       </div>
     </div>

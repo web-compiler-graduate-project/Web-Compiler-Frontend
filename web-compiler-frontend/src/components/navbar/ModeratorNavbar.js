@@ -22,9 +22,9 @@ function ModeratorNavbar({ username }) {
             <Link to="account-settings">Account Settings</Link>
           </li>
         </ul>
-        <div className="admin-actions">
+        <div className="moderator-actions">
           <div className="moderator-info">Logged in as: {username}</div>
-          <LogoutButton />
+          <LogoutButton className="logout-button"/>
         </div>
       </nav>
 

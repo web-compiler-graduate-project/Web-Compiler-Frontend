@@ -84,7 +84,8 @@ function UserManagement() {
               <th>Username</th>
               <th>Email</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Delete</th>
+              <th>Block/Unblock</th>
             </tr>
           </thead>
           <tbody>
@@ -101,13 +102,15 @@ function UserManagement() {
                   >
                     Delete
                   </button>
-                  <button
-                    className={styles.toggleBlockButton}
-                    onClick={() => toggleBlockStatus(user.id, user.isEnabled)}
-                  >
-                    {user.isEnabled ? 'Block' : 'Unblock'}
-                  </button>
                 </td>
+                <td>
+                   <button
+                      className={styles.toggleBlockButton}
+                      onClick={() => toggleBlockStatus(user.id, user.isEnabled)}
+                   >
+                    {user.isEnabled ? 'Block' : 'Unblock'}
+                   </button>
+               </td>
               </tr>
             ))}
           </tbody>
