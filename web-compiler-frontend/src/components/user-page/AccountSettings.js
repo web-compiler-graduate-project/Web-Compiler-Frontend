@@ -14,6 +14,11 @@ const AccountSettings = ({ username }) => {
     setError('');
     setSuccessMessage('');
 
+    if (newPassword && newPassword.length < 8) {
+      setError('New password must be at least 8 characters long.');
+      return;
+    }
+
     const updateData = {
       currentUsername: username,
       newUsername: newUsername || null,
