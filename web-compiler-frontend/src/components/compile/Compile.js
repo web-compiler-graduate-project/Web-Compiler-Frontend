@@ -166,7 +166,7 @@ class Compile extends Component {
     return (
       <div className="confirmation-popup">
         <div className="confirmation-content">
-          <p>Are you sure you want to submit solution? There is no way back.</p>
+          <p className="confirmation-text">Are you sure you want to submit solution? There is no way back.</p>
           <div className="confirmation-buttons">
             <button className="confirm-button" onClick={this.confirmAndSubmitSolution}>
               Yes
