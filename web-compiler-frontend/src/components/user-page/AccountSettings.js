@@ -14,6 +14,16 @@ const AccountSettings = ({ username }) => {
     setError('');
     setSuccessMessage('');
 
+    if (!newUsername && !newEmail && !currentPassword && !newPassword) {
+        setError('Please provide some data in order to change account settings.');
+        return;
+    }
+
+    if (newPassword && !currentPassword) {
+        setError('If you need to change password please provide current one first.');
+        return;
+    }
+
     if (newPassword && newPassword.length < 8) {
       setError('New password must be at least 8 characters long.');
       return;
